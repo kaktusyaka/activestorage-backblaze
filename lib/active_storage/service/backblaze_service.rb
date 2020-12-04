@@ -91,7 +91,7 @@ class ActiveStorage::Service::BackblazeService < ActiveStorage::Service
 
   def headers_for_direct_upload(key, content_type:, checksum:, content_length:, **options)
     result = @connection.b2_get_upload_url(@bucket_name)
-    { 'Authorization' => result["authorizationToken"], 'X-Bz-File-Name' => key, 'Content-Type' => content_type, 'Content-Length' => content_length, 'X-Bz-Content-Sha1' => 'do_not_verify' }
+    { 'Authorization' => result["authorizationToken"], 'X-Bz-File-Name' => key, 'Origin' => 'http://localhost:3000', 'Content-Type' => content_type, 'Content-Length' => content_length, 'X-Bz-Content-Sha1' => 'do_not_verify' }
   end
 
   private
